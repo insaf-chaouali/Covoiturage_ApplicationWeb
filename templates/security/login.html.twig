@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #c3d8e8, #eef2f6); /* Dégradé bleu doux */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .left-section, .right-section {
+            width: 50%;
+            padding: 30px;
+        }
+
+        .left-section {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-section {
+            background-color: #f0f4f8; /* Bleu clair doux */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-left: 1px solid #e0e0e0; /* Légère séparation */
+        }
+
+        .right-section h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #0078d4; /* Bleu vif */
+        }
+
+        .right-section p {
+            font-size: 1rem;
+            margin: 10px 0;
+            font-style: italic;
+            color: #555; /* Gris doux */
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #444;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: #f9f9f9;
+        }
+
+        input:focus {
+            border-color: #0078d4; /* Accent bleu */
+            outline: none;
+            background-color: #eef6fc;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #0078d4; /* Bleu */
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #005ea8; /* Bleu foncé */
+        }
+
+        .alert {
+            color: #ffffff;
+            background-color: #ff4d4d; /* Rouge vif */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .mb-3 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .mb-3 a {
+            color: #0078d4;
+            text-decoration: none;
+        }
+
+        .mb-3 a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="container">
+        <!-- Partie gauche : Formulaire -->
+        <div class="left-section">
+            <form method="post">
+                {% if error %}
+                    <div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <h1>Welcome Back!</h1>
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
+                <label for="inputPassword">Password</label>
+                <input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <button class="btn" type="submit">Sign in</button>
+            </form>
+        </div>
+
+        <!-- Partie droite : Citations -->
+        <div class="right-section">
+            <h2>Share the Journey!</h2>
+            <p>"Le covoiturage, c'est plus qu'un trajet, c'est une communauté."</p>
+        </div>
+    </div>
+{% endblock %}

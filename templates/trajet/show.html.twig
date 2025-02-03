@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajet{% endblock %}
+
+{% block head %}
+    <style>
+        /* Style global */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f8ff; /* Bleu clair pour l'arrière-plan */
+            background-image: url('https://www.dreux-agglomeration.fr/wp-content/uploads/2020/07/covoiturage_%C2%A9Freepik-Fanjianhua.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 34px;
+            color: #003366; /* Bleu foncé pour le titre */
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        /* Card container */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        /* Card */
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Card avec transparence */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0056b3; /* Bleu pour les titres */
+            margin-bottom: 12px;
+        }
+
+        .card-body {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .card-footer {
+            text-align: center;
+        }
+
+        /* Boutons avec fond solide */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007a95; /* Bleu pour les boutons */
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin: 5px 10px;
+        }
+
+        .btn:hover {
+            background-color: #006f87; /* Bleu foncé au survol */
+        }
+
+        .delete-form button {
+            padding: 12px 24px;
+            background-color: #dc3545; /* Rouge pour le bouton de suppression */
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-form button:hover {
+            background-color: #c82333; /* Rouge plus foncé au survol */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Trajet Details</h1>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">Id</div>
+            <div class="card-body">{{ trajet.id }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Conducteur</div>
+            <div class="card-body">{{ trajet.conducteur }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Point de départ</div>
+            <div class="card-body">{{ trajet.pointDepart }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Point d'arrivée</div>
+            <div class="card-body">{{ trajet.pointArrivee }}</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Date et heure de départ</div>
+            <div class="card-body">{{ trajet.dateHeureDepart ? trajet.dateHeureDepart|date('Y-m-d H:i:s') : '' }}</div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a href="{{ path('app_trajet_index') }}" class="btn">Back to list</a>
+        <a href="{{ path('app_trajet_edit', {'id': trajet.id}) }}" class="btn">Edit</a>
+    </div>
+
+    <div class="delete-form">
+        {{ include('trajet/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

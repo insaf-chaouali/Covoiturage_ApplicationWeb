@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire avec Style CSS</title>
+    <style>
+        /* Style global */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            background-image: url('https://www.dreux-agglomeration.fr/wp-content/uploads/2020/07/covoiturage_%C2%A9Freepik-Fanjianhua.jpg');
+
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Conteneur du formulaire */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        /* Titre du formulaire */
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007a95;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        /* Style des champs du formulaire */
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        .form-control label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-control input:focus,
+        .form-control select:focus,
+        .form-control textarea:focus {
+            border-color: #007a95;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Style des boutons */
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #007a95;
+            color: white;
+            font-size: 18px;
+            padding: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn:active {
+            background-color: #003f8a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <!-- Titre -->
+
+    <!-- Formulaire -->
+    {{ form_start(form) }}
+    <div class="form-control">
+        {{ form_widget(form) }}
+    </div>
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>
+
+</body>
+</html>

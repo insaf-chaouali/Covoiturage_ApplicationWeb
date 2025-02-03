@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tableau de Bord Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tableau de bord pour la gestion des conducteurs, passagers et notifications">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #5c6bc0;
+        }
+
+        .navbar a {
+            color: white !important;
+        }
+
+        .navbar a:hover {
+            color: #ffeb3b !important;
+        }
+
+        /* Header */
+        header {
+            margin-top: 30px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* Statistics Section */
+        .stats-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .stats-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .stats-card p {
+            font-size: 1.1rem;
+            color: #777;
+        }
+
+        .stats-card .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5c6bc0;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .dashboard-card .dashboard-icon {
+            font-size: 50px;
+            color: #5c6bc0;
+        }
+
+        .calendar-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .calendar-container ul li {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5c6bc0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-xxl py-5">
+    <!-- Header -->
+    <header class="mb-4 text-center">
+        <h1>Tableau de Bord Admin</h1>
+        <p>Gérez les Conducteurs, Passagers et Notifications efficacement</p>
+    </header>
+
+    <!-- Statistics Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h2 class="stat-value">120</h2>
+                <p>Conducteurs Actifs</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h2 class="stat-value">300</h2>
+                <p>Passagers Inscrits</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h2 class="stat-value">15</h2>
+                <p>Notifications en Attente</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h2 class="stat-value">5</h2>
+                <p>Réservations Récentes</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="row g-4">
+        <!-- Carte Conducteurs -->
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <div class="dashboard-icon mb-3"><i class="fa fa-car"></i></div>
+                <h5 class="card-title">Conducteurs</h5>
+                <p class="card-text text-muted">Consultez et gérez la liste des conducteurs.</p>
+                <a href="{{ path('app_conducteur_new') }}" class="btn btn-outline-primary mt-2">Ajouter un nouveau</a>
+{#                <a href="{{ path('app_conducteur_show') }}" class="btn btn-outline-primary mt-2">Lister</a>#}
+
+
+            </div>
+        </div>
+
+        <!-- Carte Passagers -->
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <div class="dashboard-icon mb-3"><i class="fa fa-users"></i></div>
+                <h5 class="card-title">Passagers</h5>
+                <p class="card-text text-muted">Gérez la liste des passagers enregistrés.</p>
+           <a href="#"  class="btn btn-primary">Voir la liste</a>
+
+            </div>
+        </div>
+
+        <!-- Carte Notifications -->
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <div class="dashboard-icon mb-3"><i class="fa fa-bell"></i></div>
+                <h5 class="card-title">Notifications</h5>
+                <p class="card-text text-muted">Consultez les notifications récentes et alertes.</p>
+   <a href="#" class="btn btn-primary">Voir les notifications</a>}
+            </div>
+        </div>
+    </div>
+
+    <!-- Carte Reservation -->
+    <div class="col-md-4">
+        <div class="dashboard-card">
+            <div class="dashboard-icon mb-3"><i class="fa fa-bell"></i></div>
+            <h5 class="card-title">Reservation</h5>
+            <p class="card-text text-muted">Consultez les Reservation récentes </p>
+            <a href="#" class="btn btn-primary">Voir les Reservation</a>
+        </div>
+    </div>
+</div>
+    <!-- Calendar Section -->
+    <div class="calendar-container mb-5">
+        <h4 class="calendar-title">Calendrier</h4>
+        <p class="text-muted">Visualisez les réservations à venir et événements importants.</p>
+        <div class="d-flex justify-content-center">
+            <div class="calendar">
+                <p><strong>Décembre 2024</strong></p>
+                <ul>
+                    <li>12/12 - Réunion de planification</li>
+                    <li>15/12 - Covoiturage à destination de l'aéroport</li>
+                    <li>20/12 - Maintenance système</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Tableau de bord Admin. Tous droits réservés.</p>
+    <a href="#">Contact</a> | <a href="#">Aide</a> | <a href="#">Mentions légales</a>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

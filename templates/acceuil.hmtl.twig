@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenue sur notre application de covoiturage - Réservez et partagez vos trajets facilement">
+    <title>Accueil - Application de Covoiturage</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Heebo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to bottom right, #007bff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .hero-section .btn {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background-color: #4b84ff;
+            border: none;
+        }
+
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-primary:hover, .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+
+        .features-section {
+            padding: 60px 20px;
+            background-color: #ffffff;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #343a40;
+        }
+
+        .features-section .feature-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .features-section .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-section .feature-card i {
+            color: #007bff;
+        }
+
+        .features-section .feature-card h5 {
+            font-size: 1.25rem;
+            margin-top: 15px;
+            color: #343a40;
+        }
+
+        .features-section .feature-card p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #343a40;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Bienvenue sur notre application de covoiturage</h1>
+        <p>Partagez vos trajets, économisez et réduisez votre empreinte carbone dès aujourd'hui.</p>
+        <div class="mt-4">
+            <a href="{{ path('app_login') }}" class="btn btn-primary btn-lg me-2">Connexion</a>
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <h2>Pourquoi choisir notre application ?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-car fa-3x mb-3"></i>
+                    <h5>Trajets flexibles</h5>
+                    <p>Réservez ou proposez des trajets adaptés à vos horaires et besoins.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-wallet fa-3x mb-3"></i>
+                    <h5>Économies garanties</h5>
+                    <p>Partagez les frais de carburant et économisez sur vos déplacements.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-leaf fa-3x mb-3"></i>
+                    <h5>Écologique</h5>
+                    <p>Réduisez votre empreinte carbone en partageant vos trajets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Application de Covoiturage. Tous droits réservés.</p>
+    <div>
+        <a href="#">Confidentialité</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Contact</a>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>

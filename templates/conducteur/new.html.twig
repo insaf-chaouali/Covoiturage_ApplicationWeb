@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Conducteur{% endblock %}
+
+{% block head %}
+    <style>
+        /* Style spécifique pour la page */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn:active {
+            background-color: #003f8a;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007a95;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="form-container">
+
+
+        {{ include('conducteur/_form.html.twig') }}
+
+        <a href="{{ path('app_conducteur_index') }}" class="back-link">Back to list</a>
+    </div>
+{% endblock %}

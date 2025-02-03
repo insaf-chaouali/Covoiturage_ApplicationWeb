@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Conducteur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style global */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7fb;
+            background-image: url('https://www.dreux-agglomeration.fr/wp-content/uploads/2020/07/covoiturage_%C2%A9Freepik-Fanjianhua.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Fixe l'image d'arrière-plan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            flex-direction: column; /* Ajouté pour un alignement vertical */
+        }
+
+        /* Conteneur principal avec fond transparent */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);  /* Fond plus clair */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            margin: 20px;
+        }
+
+        /* Titre */
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007a95;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        /* Style des champs */
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        .form-control label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-control input:focus,
+        .form-control select:focus,
+        .form-control textarea:focus {
+            border-color: #007a95;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Boutons */
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #007a95;
+            color: white;
+            font-size: 18px;
+            padding: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn:active {
+            background-color: #003f8a;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            padding: 10px;
+            background-color: #333;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: #3da85d;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer a:hover {
+            color: #3da85d;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <!-- Titre -->
+    <div class="form-title">Ajouter Conducteur</div>
+
+    <!-- Formulaire -->
+    {{ form_start(form) }}
+    {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>
+</body>
+</html>
